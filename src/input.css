@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-inter: 'Inter', 'sans-serif';
+  --color-primary: #1e1e1e;
+  --color-secondary: #666666;
+  --color-accent: #1e1e1e;
+  --color-light-gray: #fafafa;
+}
+body {
+  overflow-x: hidden;
+}
+button,
+a {
+  @apply cursor-pointer active:translate-y-px active:opacity-95;
+}
+@utility nav_link {
+  @apply text-secondary hover:text-primary transition-colors duration-200;
+}
+@utility container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+@utility tech_card {
+  @apply bg-white border border-zinc-200 size-16 sm:size-20 flex items-center justify-center rounded-lg transition-all hover:shadow-lg hover:shadow-black/5 hover:border-zinc-100;
+}
+@utility tech_card__img {
+  @apply w-10 sm:w-14 transition-transform duration-300 group-hover:scale-110;
+}
+@utility heading {
+  @apply text-3xl lg:text-5xl font-bold text-primary leading-tight;
+}
+.gradient-bg {
+  background: linear-gradient(135deg, var(--color-light-gray) 0%, #ffffff 100%);
+}
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tech-badge {
+  transition: all 0.2s ease;
+}
+.tech-badge:hover {
+  transform: scale(1.05);
+  background-color: #e5e7eb;
+}
+
+/* Legal Content */
+#markdown-content h2 {
+  @apply text-xl sm:text-2xl font-bold text-primary mt-5 mb-3 leading-tight;
+}
+
+#markdown-content h3 {
+  @apply text-lg sm:text-xl font-semibold text-primary mt-4 mb-2.5 leading-tight;
+}
+#markdown-content h4 {
+  @apply sm:text-lg font-semibold text-primary mt-3 mb-2 leading-tight;
+}
+#markdown-content p,
+#markdown-content li {
+  @apply text-sm sm:text-base text-primary mt-3 mb-2 leading-normal;
+}
+#markdown-content ul {
+  @apply list-disc;
+}
+#markdown-content ol,
+#markdown-content ul {
+  @apply list-inside my-4 space-y-2 pl-4;
+}
+#markdown-content hr {
+  @apply text-primary/10 my-6;
+}
