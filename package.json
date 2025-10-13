@@ -1,15 +1,26 @@
 {
   "name": "omnibase",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "server.js",
+  "config": {
+    "port": 3000
+  },
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/style.css --watch"
+    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/style.css --watch",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "@fastify/static": "^8.2.0",
+    "fastify": "^5.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
