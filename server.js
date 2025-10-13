@@ -6,7 +6,6 @@ import { readFileSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = dirname(__filename);
-console.log(__dirname);
 
 
 const pkg = JSON.parse(readFileSync(join(__dirname, 'package.json'), 'utf-8'));
