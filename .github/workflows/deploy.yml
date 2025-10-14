@@ -1,0 +1,30 @@
+name: Omnibase Website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: SSH and deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/website || exit 1
+
+            git restore .
+            git pull origin master  || { echo "❌ Git pull failed! Exiting..."; exit 1; }
+            npm install --legacy-peer-deps || { echo "❌ npm install failed! Exiting..."; exit 1; }
+
+            pm2 restart website
+            echo "✅ Deployment successful!"
